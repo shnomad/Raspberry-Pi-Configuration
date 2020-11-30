@@ -68,7 +68,7 @@ echo 'hdmi_mode=1'>>/boot/config.txt
 echo 'hdmi_mode=87'>>/boot/config.txt
 echo 'hdmi_timings=480 0 40 10 80 800 0 13 3 32 0 0 0 60 0 32000000 3'>>/boot/config.txt
 echo 'dtoverlay=ads7846,cs=1,penirq=25,penirq_pull=2,speed=50000,keep_vref_on=0,swapxy=0,pmax=255,xohms=150,xmin=200,xmax=3900,ymin=200,ymax=3900'>>/boot/config.txt
-echo 'display_rotate=1'>>/boot/config.txt
+echo 'display_rotate=3'>>/boot/config.txt
 echo 'hdmi_drive=1'>>/boot/config.txt
 echo 'hdmi_force_hotplug=1'>>/boot/config.txt
 
