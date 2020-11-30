@@ -1,0 +1,15 @@
+#/etc/network/interfaces.d/eth0_add_ip
+
+auto eth0:0
+allow-hotplug eth0:0
+iface eth0:0 inet static
+        address 192.168.0.101
+        netmask 255.255.255.0
+        routers 192.168.0.1
+
+auto eth0:1
+allow-hotplug eth0:1
+iface eth0:1 inet static
+        address 192.168.0.102
+        netmask 255.255.255.0
+        routers 192.168.0.1

@@ -1,0 +1,8 @@
+This tutorial will explain you how to automatically login on the serial console to a Raspbian image with systemd by simply powering the Pi on. Automatic login removes the need to type user name and password on boot. Although this is convenient solution for certain use cases, for example testing, keep in mind that it brings security risks because anyone can login.
+
+Open /lib/systemd/system/serial-getty@.service and change the following line from:
+
+ExecStart=-/sbin/agetty --keep-baud 115200,38400,9600 %I $TERM
+To:
+
+ExecStart=-/sbin/agetty --autologin pi --noclear --keep-baud 115200,38400,9600 %I $TERM
