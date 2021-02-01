@@ -45,24 +45,6 @@ if [ ! -f "$BASE_DIRECTORY/.sysroot" ]; then
     rsync -avz pi@$RASPBERRYPI_ADDRESS:/usr/local/include $BASE_DIRECTORY/sysroot/usr/local
     rsync -avz pi@$RASPBERRYPI_ADDRESS:/opt/vc $BASE_DIRECTORY/sysroot/opt
 
-	if [ ! -f "$BASE_DIRECTORY/sysroot/usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0_backup" ]; then
-		mv $BASE_DIRECTORY/sysroot/usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0 $BASE_DIRECTORY/sysroot/usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0_backup
-		ln -s $BASE_DIRECTORY/sysroot/opt/vc/lib/libEGL.so $BASE_DIRECTORY/sysroot/usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0
-	fi
-
-	if [ ! -f "$BASE_DIRECTORY/sysroot/usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0_backup" ]; then
-		mv $BASE_DIRECTORY/sysroot/usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0 $BASE_DIRECTORY/sysroot/usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0_backup
-		ln -s $BASE_DIRECTORY/sysroot/opt/vc/lib/libGLESv2.so $BASE_DIRECTORY/sysroot/usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0
-	fi
-
-	if [ ! -f "$BASE_DIRECTORY/sysroot/opt/vc/lib/libEGL.so.1" ]; then
-		ln -s $BASE_DIRECTORY/sysroot/opt/vc/lib/libEGL.so $BASE_DIRECTORY/sysroot/opt/vc/lib/libEGL.so.1
-	fi
-
-	if [ ! -f "$BASE_DIRECTORY/sysroot/opt/vc/lib/libGLESv2.so.2" ]; then
-		ln -s $BASE_DIRECTORY/sysroot/opt/vc/lib/libGLESv2.so $BASE_DIRECTORY/sysroot/opt/vc/lib/libGLESv2.so.2
-	fi
-
     if [ ! -f "$BASE_DIRECTORY/sysroot-relativelinks.py" ]; then
         wget https://raw.githubusercontent.com/riscv/riscv-poky/master/scripts/sysroot-relativelinks.py
         chmod +x $BASE_DIRECTORY/sysroot-relativelinks.py
