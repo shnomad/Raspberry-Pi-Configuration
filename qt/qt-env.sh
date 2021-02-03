@@ -32,7 +32,6 @@ fi
 
 if [ ! -f "$BASE_DIRECTORY/.qt-profile" ]; then
      echo "create qt profile"
-     touch /etc/profile.d/qt_eglfs.sh
 
 sudo cat > "/etc/profile.d/qt_eglfs.sh" << EOF
 #export QT_LOGGING_RULES="*.debug=true"
@@ -40,10 +39,34 @@ sudo cat > "/etc/profile.d/qt_eglfs.sh" << EOF
 #export QT_QPA_EVDEV_TOUCHSCREEN_PARAMETERS=/dev/input/event0:rotate=90
 #export QT_QPA_EGLFS_DISABLE_INPUT=1
 #export QT_DEBUG_PLUGINS=1
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/arm-linux-gnueabihf/
-export QT_PLUGIN_PATH=/usr/lib/plugins
+export LD_LIBRARY_PATH=/usr/local/qt5pi/lib
+export QT_PLUGIN_PATH=/usr/local/qt5pi/plugins
 export QT_QPA_FONTDIR=/usr/lib/fonts
-export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/plugins/platforms
+export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/local/qt5pi/plugins/platforms
+
+export QT_QPA_PLATFORM=linuxfb
+export QT_QPA_GENERIC_PLUGINS=tslib:/dev/input/event0
+export QT_QPA_EVDEV_TOUCHSCREEN_PARAMETERS=/dev/input/event0:rotate=90
+export TSLIB_TSEVENTTYPE='INPUT'
+export TSLIB_CALIBFILE='/etc/pointercal'
+export TSLIB_CONFFILE='/etc/ts.conf'
+export TSLIB_CONSOLEDEVICE='none'
+export TSLIB_FBDEVICE='/dev/fb0'
+export TSLIB_PLUGINDIR='/usr/local/lib/ts'
+export TSLIB_TSDEVICE='/dev/input/event0'
+EOF
+
+sudo cat > "/root/.bashrc" << EOF
+#export QT_LOGGING_RULES="*.debug=true"
+#export QT_QPA_EGLFS_NO_LIBINPUT=1
+#export QT_QPA_EVDEV_TOUCHSCREEN_PARAMETERS=/dev/input/event0:rotate=90
+#export QT_QPA_EGLFS_DISABLE_INPUT=1
+#export QT_DEBUG_PLUGINS=1
+export LD_LIBRARY_PATH=/usr/local/qt5pi/lib
+export QT_PLUGIN_PATH=/usr/local/qt5pi/plugins
+export QT_QPA_FONTDIR=/usr/lib/fonts
+export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/local/qt5pi/plugins/platforms
+
 export QT_QPA_PLATFORM=linuxfb
 export QT_QPA_GENERIC_PLUGINS=tslib:/dev/input/event0
 export QT_QPA_EVDEV_TOUCHSCREEN_PARAMETERS=/dev/input/event0:rotate=90
@@ -58,8 +81,6 @@ EOF
 
   touch $BASE_DIRECTORY/.qt-profile
 fi
-
-
 
 if [ ! -f "$BASE_DIRECTORY/.4inch-lcd-touch-config" ]; then
 
