@@ -8,7 +8,7 @@ if [ ! -f "$BASE_DIRECTORY/.qt-lib-update" ]; then
      echo "library update"
      apt update
      apt -y dist-upgrade
-     apt-get -y build-dep install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xinerama0 gdbserver
+     apt-get -y install build-dep libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xinerama0 gdbserver
      apt-get -y install libbluetooth-dev bluez-tools        
      touch $BASE_DIRECTORY/.qt-lib-update
 fi
