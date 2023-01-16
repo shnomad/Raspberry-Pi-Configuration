@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 BASE_DIRECTORY=$PWD
-OPENCV_VERSION=4.1.0
+OPENCV_VERSION=4.6.0
 set -ex
 
 mkdir -p $BASE_DIRECTORY/opencv && pushd $BASE_DIRECTORY/opencv
